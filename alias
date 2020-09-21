@@ -1,0 +1,25 @@
+alias k="kubectl"
+alias kc="kubectl -n kube-system"
+alias kd="kubectl -n default"
+alias kget="kubectl -n kube-system get"
+alias kdes="kubectl -n kube-system describe pod"
+alias kexec='kubectl exec -n kube-system -it'
+vires(){
+kubectl edit $1 $2 -o json -n kube-system
+}
+alias kdelepo='kubectl delete po -n kube-system'
+alias kall='kubectl get all -n kube-system'
+alias kpo='kubectl get pods --namespace=kube-system'
+alias kpom='kubectl get pods --namespace=kube-system | grep metering'
+alias kpojson='kubectl get -o json pod -n kube-system'
+alias kpoyaml='kubectl get -o yaml pod -n kube-system'
+alias kapo='kubectl get pods --all-namespaces'
+alias kdpo="kubectl --namespace=kube-system delete pod"
+alias klog='kubectl logs --namespace=kube-system'
+alias klogf='kubectl logs --namespace=default -f'
+alias gp='kubectl get pods --namespace=kube-system|grep Running|cut -d " " -f1 | grep'
+alias gpa='kubectl get pods --all-namespaces|cut -d " " -f1 | grep'
+kush()
+{
+  kubectl exec -n kube-system -it $1 -- /bin/sh
+}
