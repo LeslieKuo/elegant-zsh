@@ -1,10 +1,15 @@
 #!/bin/bash
 
+osrelease=`cat /etc/os-release  | grep NAME | head -1`
+export os=${osrelease:6:7}
+echo $os
+
 if [ "$os" = "Ubuntu " ]; then
     echo "This is ubuntu os."
     sudo apt-get install vim -y
     sudo apt-get install zsh -y
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    cp ~/.zshrc ~/.zshrc.bak
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 elif [ "$os" = "SLES   " ]; then
     echo "This is SUSE os."
@@ -12,6 +17,7 @@ elif [ "$os" = "SLES   " ]; then
     zypper install vim -y
     zypper install zsh -y
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    cp ~/.zshrc ~/.zshrc.bak
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 elif [ "$os" = "Red Hat" ]; then
     echo "This is redhat os."
@@ -19,13 +25,14 @@ elif [ "$os" = "Red Hat" ]; then
     sudo yum install vim -y
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     cp ~/.zshrc ~/.zshrc.bak
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 else
     echo "ERROR:There is no match"
 fi
 
 chsh -s /bin/zsh
 
-zsh
+exit
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
@@ -36,7 +43,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="michelebologna"/g' ~/.zshrc
 sed -i 's/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\nhistory-search-multi-word\nzsh-syntax-highlighting\n)/g' ~/.zshrc
 git clone -b master https://github.com/LeslieKuo/elegant-zsh.git
-cat ~/.zshrc ./elegant-zsh/alias > ~/.newzshrc
+cat ~/.zshrc ./alias > ~/.newzshrc
 mv ~/.zshrc ~/.zshrcbkp
 mv ~/.newzshrc ~/.zshrc
 
