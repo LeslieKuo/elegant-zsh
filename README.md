@@ -7,12 +7,12 @@ elegant zsh terminal settings for multi-os including alias
 | :-------------------:|:--------:|:--------:|:--------:|
 | AWS EBS | ✅ |  | |
 | AzureFile | ✅ | ✅ | ✅ |
-| AzureDisk | ✅|1|1|
+| AzureDisk | ✅|||
 | CephFS | ✅ | ✅ | ✅|
 |Fibre Channel|✅|✅| |
 |Glusterfs| ✅ | ✅ | ✅|
-|HostPath| ✅ | 1|1 |
-| iSCSI | ✅ |✅|1 |
+|HostPath| ✅ | | |
+| iSCSI | ✅ |✅| |
 |NFS | ✅ |✅|✅|
 
 
