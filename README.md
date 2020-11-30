@@ -9,7 +9,7 @@ elegant zsh terminal settings for multi-os including alias
 | AzureFile | ✅ | ✅ | ✅ |
 | AzureDisk | ✅|||
 | CephFS | ✅ | ✅ | ✅|
-|HostPath| ✅ | | |
+|RBD| ✅ | ✅ | |
 | iSCSI | ✅ |✅| |
 
 
