@@ -23,3 +23,37 @@ kush()
 {
   kubectl exec -n kube-system -it $1 -- /bin/sh
 }
+
+alias k="kubectl"
+alias kc="kubectl -n ibm-common-services"
+alias kget="kubectl -n kube-system get"
+alias kdes="kubectl -n kube-system describe pod"
+alias kexec='kubectl exec -n kube-system -it'
+
+vires(){
+kubectl edit $1 $2 -o json -n kube-system
+}
+alias viui='kc edit deployment metering-ui -o json -n ibm-common-services'
+alias vidm='kc edit deployment metering-dm -o json -n ibm-common-services'
+alias viapi='kc edit deployment mcmserver-primary-core-apiserver -o json'
+alias vireader='kc edit deployment metering-reader -o json -n ibm-common-services'
+alias vimcmui='kc edit deployment metering-mcmui -o json'
+alias vireceiver='kc edit deployment multicluster-hub-metering-metering-receiver -o json'
+
+alias kdelepo='kubectl delete po -n kube-system'
+alias kall='kubectl get all -n kube-system'
+alias kpo='kubectl get pods --namespace=ibm-common-services'
+alias kpom='kubectl get pods --namespace=ibm-common-services | grep metering'
+alias kpojson='kubectl get -o json pod -n kube-system'
+alias kpoyaml='kubectl get -o yaml pod -n kube-system'
+alias kapo='kubectl get pods --all-namespaces'
+alias kdpo="kubectl --namespace=kube-system delete pod"
+alias klog='kubectl logs --namespace=kube-system'
+alias klogf='kubectl logs --namespace=default -f'
+alias gp='kubectl get pods --namespace=kube-system|grep Running|cut -d " " -f1 | grep'
+alias gpa='kubectl get pods --all-namespaces|cut -d " " -f1 | grep'
+
+kush()
+{
+  kubectl exec -n ibm-common-services -it $1 -- /bin/sh
+}
